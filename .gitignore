@@ -12,3 +12,13 @@ scripts/test/*.txt
 tmp/
 .kosmtik-config.yml
 .env
+.idea/
+.DS_Store
+*.osm.pbf
+# Pre-rendered static tiles (docker/static pipeline)
+tiles/
+mbtiles/
+*.mbtiles
+docker/static/mapnik.xml
+# Keep the static-tile pipeline's localconfig (overrides localconfig*.json above)
+!docker/static/localconfig.json
