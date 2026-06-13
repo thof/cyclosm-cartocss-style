@@ -1,0 +1,22 @@
+# Podman overlay for rootless deployment (Fedora/RHEL).
+#
+#   podman-compose -f docker-compose.yml -f docker-compose.podman.yml ...
+#
+# Why this is needed: the `kosmtik` and `render` containers run as USER 1000 in
+# the image, but must WRITE to the bind-mounted repo (tmp/, data/, mbtiles/).
+# Under rootless Podman your host user maps to container UID 0, so we run these
+# two services as root inside the container — that maps back to your host user
+# and can write host-owned files.
+#
+# We use `user: 0` rather than `userns_mode: keep-id` because podman-compose puts
+# services in a shared pod by default, and Podman rejects a per-container
+# --userns together with --pod ("--userns and --pod cannot be set together").
+#
+# SELinux: docker-compose.yml already carries `:z` mount labels. They are no-ops
+# when SELinux is permissive/disabled (and on Docker/macOS), and do the right
+# relabeling if SELinux is ever set to enforcing — so nothing extra is required.
+services:
+  kosmtik:
+    user: "0:0"
+  render:
+    user: "0:0"
