@@ -1,0 +1,42 @@
+[
+  {
+    "where": "Layer",
+    "if": { "Datasource.type": "postgis" },
+    "then": { "Datasource.host": "db", "Datasource.user": "postgres" }
+  },
+  {
+    "where": "Layer",
+    "if": { "id": "land-low" },
+    "then": { "Datasource.file": "/cyclosm/data/land-low/land-low.shp" }
+  },
+  {
+    "where": "Layer",
+    "if": { "id": "land-high" },
+    "then": { "Datasource.file": "/cyclosm/data/land-high/land-high.shp" }
+  },
+  {
+    "where": "Layer",
+    "if": { "id": "contours100" },
+    "then": { "properties.status": "off" }
+  },
+  {
+    "where": "Layer",
+    "if": { "id": "contours50" },
+    "then": { "properties.status": "off" }
+  },
+  {
+    "where": "Layer",
+    "if": { "id": "contours20" },
+    "then": { "properties.status": "off" }
+  },
+  {
+    "where": "Layer",
+    "if": { "id": "contours10" },
+    "then": { "properties.status": "off" }
+  },
+  {
+    "where": "Layer",
+    "if": { "id": "hillshade" },
+    "then": { "properties.status": "off" }
+  }
+]

@@ -3,6 +3,10 @@ Set up a demo tile server serving static (pre-generated) tiles
 
 This is a complement to the [INSTALL.md](INSTALL.md) documentation.
 
+> For a self-contained, Docker-based alternative (no system Mapnik or Tirex
+> required — compiles the style, pre-renders tiles, and serves them via
+> `docker compose`), see [STATIC_TILES.md](STATIC_TILES.md).
+
 ### Requirements
 
 The following assumes you are using an Ubuntu 18.04 LTS distribution. If you
